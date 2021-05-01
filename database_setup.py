@@ -22,7 +22,7 @@ class Book(Base):
     id = Column(Integer, primary_key=True)
     title = Column(String(250), nullable=False)
     author = Column(String(250), nullable=False)
-    genre = Column(String(250))
+    genre = Column(String(250), nullable=True)
 
 
 # создает экземпляр create_engine в конце файла
