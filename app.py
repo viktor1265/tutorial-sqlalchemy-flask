@@ -20,8 +20,9 @@ session = DBSession()
 @app.route('/')
 @app.route('/books')
 def showBooks():
+    listgenre = session.query(Book.genre).distinct(Book.genre)
     books = session.query(Book).all()
-    return render_template("books.html", books=books)
+    return render_template("books.html", books=books, listgenre=listgenre)
 
 
 # Эта функция позволит создать новую книгу и сохранить ее в базе данных.

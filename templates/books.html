@@ -4,17 +4,23 @@
    <a href="{{url_for('newBook')}}">
        <button>Добавить книгу</button>
    </a>
+   {% for el_gen in listgenre %}
+   <p><b>{{el_gen.genre}}</b></p>
    <ol>
-       {% for book in books %}
-       <li> {{book.title}} — {{book.author}} </li>
-       <a href="{{url_for('editBook', book_id = book.id )}}">
-           Изменить
-       </a>
-       <a href="{{url_for('deleteBook', book_id = book.id )}}" style="margin-left: 10px;">
-           Удалить
-       </a>
-       <br> <br>
-       {% endfor %}
+
+           {% for book in books %}
+            {% if el_gen.genre == book.genre %}
+               <li> {{book.title}} — {{book.author}} </li>
+               <a href="{{url_for('editBook', book_id = book.id )}}">
+                   Изменить
+               </a>
+               <a href="{{url_for('deleteBook', book_id = book.id )}}" style="margin-left: 10px;">
+                   Удалить
+               </a>
+               <br> <br>
+            {% endif %}
+           {% endfor %}
    </ol>
+    {% endfor %}
 </body>
 </html>
